@@ -24,7 +24,7 @@ setTimeout(()=>{
 
 //3 types of module
 /*
-local module
-global module
-3rd party module/package
+local module  -> local utils.js,helloWorld.js
+global module  -> fs, __filename
+3rd party module/package  -> special purpose, nvm install
 */ 
