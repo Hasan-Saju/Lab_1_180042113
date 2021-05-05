@@ -39,6 +39,7 @@ fs.readFile("./contents/RenamedFile.txt","utf-8",(err,data)=>{
 */
 
 
+/*
 console.log("before");
 fs.readFile("./contents/RenamedFile.txt","utf-8",(err,data)=>{
     if(err)
@@ -64,3 +65,13 @@ fs.readFile("./contents/RenamedFile.txt","utf-8",(err,data)=>{
 });
 
 console.log("after");
+
+*/
+
+
+// delete file
+
+fs.unlink("./contents/demoFile.txt",(err)=>{
+    if(!err)
+    console.log("Deleted Successfully!");
+});
