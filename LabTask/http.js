@@ -33,7 +33,6 @@ const server=http.createServer((req,res)=>{
         res.write(importedHtml.html.services);
         res.end();   
     }
-    // problem
     else if(req.url== "/work")
     {
         res.write(importedHtml.html.work);
