@@ -33,14 +33,15 @@ const server=http.createServer((req,res)=>{
         res.write(importedHtml.html.services);
         res.end();   
     }
-    else if(req.url="/work")
+    // problem
+    else if(req.url== "/work")
     {
         res.write(importedHtml.html.work);
-        res.end();   
+        res.end();
     }
     else
     {
-        res.write("<h1>Page doesn't exist.</h1><br><a href="/">Return to Home Page</a>");
+        res.write("<h1>Page doesn't exist.</h1><br><a href='/'>Return to Home Page</a>");
         res.end();   
     }
 });
