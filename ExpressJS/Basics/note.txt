@@ -16,3 +16,4 @@ now run the server with
 
 nodemon helps to restart the server 
 
+.env will contains the global variables
