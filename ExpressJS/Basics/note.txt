@@ -17,3 +17,35 @@ now run the server with
 nodemon helps to restart the server 
 
 .env will contains the global variables
+
+
+middleware - function
+has access
+1. req
+2. res 
+3. next 
+
+-can execute any code 
+-req/res -> can change/end
+-another middleware call
+
+5 types of middleware
+
+1. Application level middleware
+    app.use() default route when url doesn't match
+    signature: request, response, next
+
+2. Router Level Middleware 
+    request er upor base kore redirect or onno operation
+    router.use()
+    signature: request, response, next
+    
+3. Error handling middleware
+    sends response or file according to Error
+    err, req, res, next 
+
+4. Built in middleware 
+    body theke json newa , urlencoding making false 
+
+5. 3rd party middleware 
+    Morgan, measuring response time 

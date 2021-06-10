@@ -4,6 +4,21 @@ const app = express();
 const userRoutes = require("./routes/userRoutes.routes");
 
 
+
+// req -> middleware -> response 
+const logger = (req, res, next) =>{
+    const method = req.method;
+    const url = req.url;
+    const date = new Date().getFullYear().toString();
+
+    // req.name="saju";  //can even change the request from middleware
+    console.log(method, url, date);        
+    // res.send("<h1>Testing Middleware</h1>");
+
+    next(); //middleware run er por app.get("/") er baki tuku run hobe
+}
+app.use(logger); //shob gula route a middleware ta use hobe, router moddhe ar dewa lagbe na
+
 // using user routes
 app.use(userRoutes); //kono special url nai
 // app.use("/users/",userRoutes); //ei file er shob url er sathe users add 
@@ -11,7 +26,7 @@ app.use(userRoutes); //kono special url nai
 
 
 // handing base url
-app.get("/",(req,res)=>{
+app.get("/",logger,(req,res)=>{         //middleware added in base url 
     // res.statusCode = 200;
     // res.send("<h1>Home Page - GET Request</h1>");
     res.sendFile("home.html",{root:"./views"});
