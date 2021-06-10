@@ -12,8 +12,9 @@ app.use(userRoutes); //kono special url nai
 
 // handing base url
 app.get("/",(req,res)=>{
-    res.statusCode = 200;
-    res.send("<h1>Home Page - GET Request</h1>");
+    // res.statusCode = 200;
+    // res.send("<h1>Home Page - GET Request</h1>");
+    res.sendFile("home.html",{root:"./views"});
 });
 
 app.post("/",(req,res)=>{
