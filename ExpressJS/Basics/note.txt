@@ -1,0 +1,18 @@
+npm - for installing a package and run
+npx - for one time execution
+
+node packet manager initialization
+* npm init -y  
+
+* npm i express dotenv body-parser nodemon
+
+package-lock.json will ensure in every machine the project will behave same
+
+#for running the server and server content will change runtime
+
+=> package.json => "scripts" => add "start" : "nodemon index.js"
+now run the server with 
+* npm start 
+
+nodemon helps to restart the server 
+
