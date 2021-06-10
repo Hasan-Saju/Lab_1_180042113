@@ -2,9 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/login",(req,res)=>{
-    const id = req.query.id;
+    /*const id = req.query.id;
+    const username = req.query.username; */
+    // together
+    const{id,username}=req.query;
+
     // res.send("This is Login Page");
-    res.send(`user with ID - ${id} is requesting to login.`);
+    res.send(`user with ID - ${id} and Username - ${username} is requesting to login.`);
 });
 
 router.get("/register",(req,res)=>{
