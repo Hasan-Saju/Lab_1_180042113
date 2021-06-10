@@ -5,7 +5,8 @@ const userRoutes = require("./routes/userRoutes.routes");
 
 
 // using user routes
-app.use(userRoutes);
+// app.use(userRoutes); //kono special url nai
+app.use("/users/",userRoutes);
 
 
 
