@@ -13,6 +13,9 @@ app.post("/",(req,res)=>{
 });
 
 app.get("/about",(req,res)=>{
+    // res.cookie("username","saju");  //key-value pair hishebe store
+    // res.clearCookie("username");
+    res.append("id","180042113"); //cookie through header
     res.send("<h1>About Page</h1>");
 });
 
