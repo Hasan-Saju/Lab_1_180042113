@@ -1,6 +1,13 @@
 // app creation
 const express = require('express');
 const app = express(); 
+const userRoutes = require("./routes/userRoutes.routes");
+
+
+// using user routes
+app.use(userRoutes);
+
+
 
 // handing base url
 app.get("/",(req,res)=>{
@@ -20,7 +27,8 @@ app.get("/about",(req,res)=>{
 });
 
 app.get("/contact",(req,res)=>{
-    res.send("<h1>Contact Page</h1>");
+    res.json({name:"John Reese",profession:"N/A"});
+    // res.send("<h1>Contact Page</h1>");
 });
 
 app.use((req,res)=>{
