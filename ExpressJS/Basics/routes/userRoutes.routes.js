@@ -13,9 +13,13 @@ router.use(bodyParser.json());
 //using the controller files
 router.get("/login",getLogin);
 router.get("/dashboard",getDashboard);
+
+/*
 router.get("/register",getRegister);
 router.post("/register",isLoggedIn,postRegister);
-
+*/
+// combo of same url
+router.route('/register').all(isLoggedIn).get(getRegister).post(postRegister);
 
 /*
 router.get("/login",(req,res)=>{
