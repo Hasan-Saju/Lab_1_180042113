@@ -4,8 +4,8 @@ const app = express();
 const userRoutes = require("./routes/userRoutes.routes");
 
 
-
 // req -> middleware -> response 
+/* //will transfer into middlewares file
 const logger = (req, res, next) =>{
     const method = req.method;
     const url = req.url;
@@ -17,16 +17,19 @@ const logger = (req, res, next) =>{
 
     next(); //middleware run er por app.get("/") er baki tuku run hobe
 }
-app.use(logger); //shob gula route a middleware ta use hobe, router moddhe ar dewa lagbe na
+*/
+//app.use(logger); //shob gula route a middleware ta use hobe, router moddhe ar dewa lagbe na
 
 // using user routes
 app.use(userRoutes); //kono special url nai
 // app.use("/users/",userRoutes); //ei file er shob url er sathe users add 
 
-
+const {logger,printSomething} = require("./middlewares/app.middlewares");
+app.use([logger,printSomething]);
 
 // handing base url
-app.get("/",logger,(req,res)=>{         //middleware added in base url 
+// app.get("/",logger,(req,res)=>{ 
+app.get("/",(req,res)=>{         //middleware added in base url 
     // res.statusCode = 200;
     // res.send("<h1>Home Page - GET Request</h1>");
     res.sendFile("home.html",{root:"./views"});
