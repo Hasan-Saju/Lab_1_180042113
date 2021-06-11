@@ -3,6 +3,8 @@ const express = require('express');
 const app = express(); 
 const userRoutes = require("./routes/userRoutes.routes");
 
+const {logger,printSomething} = require("./middlewares/app.middlewares");
+app.use([logger,printSomething]);
 
 // req -> middleware -> response 
 /* //will transfer into middlewares file
@@ -24,8 +26,9 @@ const logger = (req, res, next) =>{
 app.use(userRoutes); //kono special url nai
 // app.use("/users/",userRoutes); //ei file er shob url er sathe users add 
 
-const {logger,printSomething} = require("./middlewares/app.middlewares");
-app.use([logger,printSomething]);
+// for using static things, public contains all the static content
+app.use(express.static("public"));
+
 
 // handing base url
 // app.get("/",logger,(req,res)=>{ 

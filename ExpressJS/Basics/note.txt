@@ -49,3 +49,7 @@ has access
 
 5. 3rd party middleware 
     Morgan, measuring response time 
+
+
+css, image these are static object
+need express.static to use these object
