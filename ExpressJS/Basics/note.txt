@@ -53,3 +53,6 @@ has access
 
 css, image these are static object
 need express.static to use these object
+
+3rd party middleware
+npm install morgan

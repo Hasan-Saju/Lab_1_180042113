@@ -4,7 +4,13 @@ const app = express();
 const userRoutes = require("./routes/userRoutes.routes");
 
 const {logger,printSomething} = require("./middlewares/app.middlewares");
-app.use([logger,printSomething]);
+
+const morgan = require('morgan')
+
+app.use(morgan("tiny"));
+// print method, url, content length, response time
+
+// app.use([logger,printSomething]);
 
 // req -> middleware -> response 
 /* //will transfer into middlewares file
