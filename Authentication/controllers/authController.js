@@ -34,6 +34,12 @@ const postRegister = (req,res) => {
             res.redirect("/register");
             
         }
+        else if(password1.length<8)
+        {
+            console.log("Password must be consist with at least 8 characters.");
+            alert("Password must be consist with at least 8 characters.");
+            res.redirect("/register");
+        }
         else{
 
         let hashedPassword = await bcrypt.hash(password1,8);
