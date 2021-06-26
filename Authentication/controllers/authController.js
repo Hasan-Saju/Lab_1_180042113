@@ -1,4 +1,5 @@
 const getRegister = (req,res) => {
+    console.log("register get");
     res.sendFile("register.html",{root:"./views/templates/AdminLTE-master/pages/examples"});   
 };
 
@@ -11,10 +12,12 @@ const postRegister = (req,res) => {
 };
 
 const getLogin = (req,res) => {
+    console.log("login Get");
     res.sendFile("login.html",{root:"./views/templates/AdminLTE-master/pages/examples"});
 };
 
 const getDashboard = (req,res) => {
+    console.log("dash get");
     res.sendFile("index.html",{root:"./views/templates/AdminLTE-master"});
 }
 
