@@ -2,3 +2,5 @@ node_modules
 # because of sensitive information
 .env
 AdminLTE-master
+dist
+plugins
