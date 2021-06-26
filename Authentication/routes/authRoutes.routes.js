@@ -10,7 +10,7 @@ router.use(bodyParser.urlencoded({extended: false})); //body r info url a jabe n
 router.use(bodyParser.json());
 
 router.get("/register",getRegister);
-router.post("/register",registration,postRegister);
+router.post("/register",postRegister);
 
 router.get("/login",getLogin);
 router.get("/dashboard",getDashboard);
