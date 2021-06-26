@@ -40,6 +40,18 @@ const postRegister = (req,res) => {
             alert("Password must be consist with at least 8 characters.");
             res.redirect("/register");
         }
+        else if(name.length<=0)
+        {
+            console.log("Name can not be blank.");
+            alert("Name can not be blank.");
+            res.redirect("/register");
+        } 
+        else if(mail.length<=0)
+        {
+            console.log("Email can not be blank.");
+            alert("Email can not be blank.");
+            res.redirect("/register");
+        }
         else{
 
         let hashedPassword = await bcrypt.hash(password1,8);
