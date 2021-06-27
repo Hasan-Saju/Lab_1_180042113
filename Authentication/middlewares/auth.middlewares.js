@@ -19,6 +19,7 @@ const isLoggedIn = (req,res,next) =>{
         }
         else if(cookies.substring(0,8)=="usermail")
         {
+            res.clearCookie(cookies);
             next();
         }
         else
