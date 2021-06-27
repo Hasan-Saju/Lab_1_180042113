@@ -34,10 +34,10 @@ const postRegister = (req,res) => {
             res.redirect("/register");
             
         }
-        else if(password1.length<8)
+        else if(password1.length<6)
         {
-            console.log("Password must be consist with at least 8 characters.");
-            alert("Password must be consist with at least 8 characters.");
+            console.log("Password must be consist with at least 6 characters.");
+            alert("Password must be consist with at least 6 characters.");
             res.redirect("/register");
         }
         else if(name.length<=0)
@@ -127,7 +127,7 @@ const postLogin = async(req,res) =>{
                 //     httpOnly: true
                 // }
                 // res.cookie('jwt',token,cookieOtions);
-                res.cookie('usermail','google');
+                res.cookie('usermail',mail);
                 res.redirect("/dashboard");
             }
         });        
