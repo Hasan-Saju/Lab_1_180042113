@@ -127,7 +127,7 @@ const postLogin = async(req,res) =>{
                 //     httpOnly: true
                 // }
                 // res.cookie('jwt',token,cookieOtions);
-                res.cookie('usermail',mail);
+                res.cookie('username',results[0].name);
                 res.redirect("/dashboard");
             }
         });        
