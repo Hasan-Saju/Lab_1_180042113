@@ -83,9 +83,54 @@ const getLogin = (req,res) => {
     res.sendFile("login.html",{root:"./views/templates/AdminLTE-master/pages/examples"});
 };
 
+const postLogin = async(req,res) =>{
+    try
+    {
+        const {mail,password} = req.body;
+        if(!mail)
+        {
+            console.log("Email can not be blank.");
+            alert("Email can not be blank.");
+            res.redirect("/login");
+        }
+        else if(!password)
+        {
+            console.log("Password can not be blank.");
+            alert("Password can not be blank.");
+            res.redirect("/login");
+        }
+        else
+        {
+
+        db.query('select * from clients where email = ?',[mail], async(error,results)=>{
+            console.log(results);
+            if(!results || !(await bcrypt.compare(password,results[0].password) ) )
+            {
+                console.log("Email or Password is incorrect.");
+                alert("Email or Password is incorrect.");
+                res.redirect("/login");
+            }
+            else
+            {
+                const id = results[0].id;
+
+                const token = jwt.sign({})
+                // 17.38
+            }
+        });        
+       
+    }
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
+};
+
+
 const getDashboard = (req,res) => {
     res.sendFile("index.html",{root:"./views/templates/AdminLTE-master"});
 }
 
-module.exports = {getRegister, postRegister, getLogin, getDashboard};
+module.exports = {getRegister, postRegister, postLogin, getLogin, getDashboard};
 // name mail pass1 pass2

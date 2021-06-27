@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser"); //for accessing data from html body
-const { getRegister, postRegister, getLogin, getDashboard} = require("./../controllers/authController");
+const { getRegister, postRegister, getLogin, postLogin, getDashboard} = require("./../controllers/authController");
 const {registration} = require("./../middlewares/auth.middlewares");
 
 
@@ -13,6 +13,8 @@ router.get("/register",getRegister);
 router.post("/register",postRegister);
 
 router.get("/login",getLogin);
+router.post("/login",postLogin);
+
 router.get("/dashboard",getDashboard);
 
 module.exports = router;
