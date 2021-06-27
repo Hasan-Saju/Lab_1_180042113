@@ -1,2 +1,3 @@
 npm i bcryptjs
 npm i cookie-parser jsonwebtoken
+npm install ejs

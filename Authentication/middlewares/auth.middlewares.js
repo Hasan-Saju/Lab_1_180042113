@@ -34,9 +34,13 @@ const isLoggedIn = (req,res,next) =>{
                 userName=userName+' ';
             }
             alert("Welcome "+userName);
+            client=userName;
             res.clearCookie(cookies);
             next();
-            
+            // change
+            // return res.render("/dashboard",{
+            //     client:userName
+            // });
         }
         else
         {
