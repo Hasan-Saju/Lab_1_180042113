@@ -2,4 +2,4 @@
 
 Authentication with Node, Express, MongoDB and PassportJS
 
-Functiality for Math Olympiad and Contest Programming
+Functionality for Math Olympiad and Contest Programming
