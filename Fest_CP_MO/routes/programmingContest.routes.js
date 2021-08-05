@@ -13,7 +13,7 @@ const {
   deleteCP,
   paymentDoneCP,
   selectCP,
-} = require("../controllers/mathOlympiad.controller");
+} = require("../controllers/programmingContest.controller");
 
 router.get("/register", ensureAuthenticated, addUserData, getCP);
 router.post("/register", ensureAuthenticated, addUserData, postCP);

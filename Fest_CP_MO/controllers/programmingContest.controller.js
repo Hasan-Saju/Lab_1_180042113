@@ -1,9 +1,23 @@
-const getCP = (req, res) => {};
-const postCP = (req, res) => {};
-const getCPList = (req, res) => {};
-const deleteCP = (req, res) => {};
-const paymentDoneCP = (req, res) => {};
-const selectCP = (req, res) => {};
+const ProgrammingContest = require("../models/ProgrammingContest.model");
+
+const getCP = (req, res) => {
+  res.render("programming-contest/register.ejs");
+};
+const postCP = (req, res) => {
+  res.render("programming-contest/register.ejs");
+};
+const getCPList = (req, res) => {
+  res.render("programming-contest/list.ejs");
+};
+const deleteCP = (req, res) => {
+  res.render("programming-contest/list.ejs");
+};
+const paymentDoneCP = (req, res) => {
+  res.render("programming-contest/list.ejs");
+};
+const selectCP = (req, res) => {
+  res.render("programming-contest/list.ejs");
+};
 
 module.exports = {
   getCP,
