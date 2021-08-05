@@ -29,6 +29,13 @@
           <div class="x_content">
             <br />
 
+            <% let success="Team has been registered successfully!" %>
+            <%if(error.length>0){if(error==success){%>
+            <div class="alert alert-success"><%=error%></div>
+            <%}else{%>
+            <div class="alert alert-danger"><%=error%></div>
+            <%}%><%}%>
+
             <form
               method="POST"
               action="/ProgrammingContest/register"
@@ -41,6 +48,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="teamName"
+                      id="teamName"
                       class="form-control"
                       placeholder="Team Name"
                     />
@@ -48,6 +57,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="institution"
+                      id="institution"
                       class="form-control"
                       placeholder="Institution Name"
                     />
@@ -62,6 +73,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="coach"
+                      id="coach"
                       class="form-control"
                       placeholder="Name of the Coach"
                     />
@@ -69,6 +82,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="contactCoach"
+                      id="contactCoach"
                       class="form-control"
                       placeholder="Contact No. of the Coach"
                     />
@@ -76,6 +91,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="emailCoach"
+                      id="emailCoach"
                       class="form-control"
                       placeholder="Email of the Coach"
                     />
@@ -86,7 +103,11 @@
               <div class="item form-group">
                 <div class="form-row">
                   <div class="col">
-                    <select class="form-control" id="tshirt" name="tshirt">
+                    <select
+                      class="form-control"
+                      id="tshirtCoach"
+                      name="tshirtCoach"
+                    >
                       <option disabled>... Choose Option ...</option>
                       <option value="M">Medium</option>
                       <option value="L">Large</option>
@@ -103,6 +124,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="leader"
+                      id="leader"
                       class="form-control"
                       placeholder="Name of the Team Leader"
                     />
@@ -110,6 +133,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="contactLeader"
+                      id="contactLeader"
                       class="form-control"
                       placeholder="Contact No. of the Team Leader"
                     />
@@ -117,6 +142,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="emailLeader"
+                      id="emailLeader"
                       class="form-control"
                       placeholder="Email of the Team Leader"
                     />
@@ -127,7 +154,11 @@
               <div class="item form-group">
                 <div class="form-row">
                   <div class="col">
-                    <select class="form-control" id="tshirt" name="tshirt">
+                    <select
+                      class="form-control"
+                      id="tshirtLeader"
+                      name="tshirtLeader"
+                    >
                       <option disabled>... Choose Option ...</option>
                       <option value="M">Medium</option>
                       <option value="L">Large</option>
@@ -144,6 +175,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="member1"
+                      id="member1"
                       class="form-control"
                       placeholder="Name of Member-1"
                     />
@@ -151,6 +184,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="contactMember1"
+                      id="contactMember1"
                       class="form-control"
                       placeholder="Contact No. of Member-1"
                     />
@@ -158,6 +193,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="emailMember1"
+                      id="emailMember1"
                       class="form-control"
                       placeholder="Email of Member-1"
                     />
@@ -168,7 +205,11 @@
               <div class="item form-group">
                 <div class="form-row">
                   <div class="col">
-                    <select class="form-control" id="tshirt" name="tshirt">
+                    <select
+                      class="form-control"
+                      id="tshirtMember1"
+                      name="tshirtMember1"
+                    >
                       <option disabled>... Choose Option ...</option>
                       <option value="M">Medium</option>
                       <option value="L">Large</option>
@@ -185,6 +226,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="member2"
+                      id="member2"
                       class="form-control"
                       placeholder="Name of Member-2"
                     />
@@ -192,6 +235,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="contactMember2"
+                      id="contactMember2"
                       class="form-control"
                       placeholder="Contact No. of Member-2"
                     />
@@ -199,6 +244,8 @@
                   <div class="col">
                     <input
                       type="text"
+                      name="emailMember2"
+                      id="emailMember2"
                       class="form-control"
                       placeholder="Email of Member-2"
                     />
@@ -210,7 +257,11 @@
               <div class="item form-group">
                 <div class="form-row">
                   <div class="col">
-                    <select class="form-control" id="tshirt" name="tshirt">
+                    <select
+                      class="form-control"
+                      id="tshirtMember2"
+                      name="tshirtMember2"
+                    >
                       <option disabled>... Choose Option ...</option>
                       <option value="M">Medium</option>
                       <option value="L">Large</option>
