@@ -102,13 +102,69 @@ const getCPList = (req, res) => {
     });
 };
 const deleteCP = (req, res) => {
-  res.render("programming-contest/list.ejs");
+  let error = "";
+
+  ProgrammingContest.deleteOne({ _id: req.params.id })
+    .then(() => {
+      let error = "Data has been deleted successfully!";
+      req.flash("error", error);
+      res.redirect("/ProgrammingContest/list");
+    })
+    .catch(() => {
+      let error = "Failed to delete data";
+      req.flash("error", error);
+      res.redirect("/ProgrammingContest/list");
+    });
 };
 const paymentDoneCP = (req, res) => {
-  res.render("programming-contest/list.ejs");
+  const id = req.params.id;
+
+  ProgrammingContest.findOne({ _id: id })
+    .then((team) => {
+      team.paid = team.total;
+      team
+        .save()
+        .then(() => {
+          let error = "Payment completed successfully!";
+          req.flash("error", error);
+          res.redirect("/ProgrammingContest/list");
+        })
+        .catch(() => {
+          let error = "Data could not be updated!";
+          req.flash("error", error);
+          res.redirect("/ProgrammingContest/list");
+        });
+    })
+    .catch(() => {
+      let error = "Data could not be updated!";
+      req.flash("error", error);
+      res.redirect("/ProgrammingContest/list");
+    });
 };
 const selectCP = (req, res) => {
-  res.render("programming-contest/list.ejs");
+  const id = req.params.id;
+
+  ProgrammingContest.findOne({ _id: id })
+    .then((team) => {
+      team.selected = true;
+      team
+        .save()
+        .then(() => {
+          let error = "Team has been selected successfully!";
+          req.flash("error", error);
+          res.redirect("/ProgrammingContest/list");
+        })
+        .catch(() => {
+          let error = "Data could not be updated!";
+          req.flash("error", error);
+          res.redirect("/ProgrammingContest/list");
+        });
+    })
+    .catch(() => {
+      let error = "Data could not be updated!";
+      req.flash("error", error);
+      res.redirect("/ProgrammingContest/list");
+    });
 };
 
 module.exports = {
