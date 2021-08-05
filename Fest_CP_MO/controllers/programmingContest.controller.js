@@ -25,14 +25,7 @@ const postCP = (req, res) => {
     tshirtMember2,
   } = req.body;
 
-  console.log(teamName);
-  console.log(institution);
-  console.log(coach);
-  console.log(contactCoach);
-  console.log(emailCoach);
-  console.log(tshirtCoach);
-
-  const total = 1200;
+  const total = 2000;
   const paid = 0;
   const selected = false;
   let error = "";
@@ -90,7 +83,23 @@ const postCP = (req, res) => {
 };
 
 const getCPList = (req, res) => {
-  res.render("programming-contest/list.ejs");
+  let all_team = [];
+  let error = "";
+  ProgrammingContest.find()
+    .then((data) => {
+      all_team = data;
+      res.render("programming-contest/list.ejs", {
+        error: req.flash("error"),
+        teams: all_team,
+      });
+    })
+    .catch(() => {
+      error = "Failed to retrieve data!";
+      res.render("programminh-contest/list.ejs", {
+        error: req.flash("error", error),
+        teams: all_team,
+      });
+    });
 };
 const deleteCP = (req, res) => {
   res.render("programming-contest/list.ejs");

@@ -1,1 +1,154 @@
-<h1>CP Team List</h1>
+<div class="right_col" role="main">
+  <div class="col-md-12 col-sm-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Programming Contest<small>Team List</small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li>
+            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <br />
+
+        <% let success="Data has been deleted successfully!" %> <% let
+        success2="Payment completed successfully!" %> <% let
+        success3="Participant has been selected successfully!" %>
+        <%if(error.length>0){if((error==success) || (error==success2) ||
+        (error==success3)){%>
+        <div class="alert alert-success"><%=error%></div>
+        <%}else{%>
+        <div class="alert alert-danger"><%=error%></div>
+        <%}%> <%}%>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card-box table-responsive">
+              <table
+                id="datatable-responsive"
+                class="table table-striped table-bordered dt-responsive nowrap"
+                cellspacing="0"
+                width="100%"
+              >
+                <thead>
+                  <tr>
+                    <th colspan="2">Team Information</th>
+                    <th colspan="4">Coach Information</th>
+                    <th colspan="4">Team Leader Information</th>
+                    <th colspan="4">Member-1 Information</th>
+                    <th colspan="4">Member-2 Information</th>
+                    <th colspan="8">Others</th>
+                  </tr>
+                  <tr>
+                    <th>Team<br />Name</th>
+                    <th>Institution</th>
+
+                    <th>Name</th>
+                    <th>Contact No.</th>
+                    <th>Email</th>
+                    <th>T-Shirt</th>
+                    <th>Name</th>
+                    <th>Contact No.</th>
+                    <th>Email</th>
+                    <th>T-Shirt</th>
+                    <th>Name</th>
+                    <th>Contact No.</th>
+                    <th>Email</th>
+                    <th>T-Shirt</th>
+                    <th>Name</th>
+                    <th>Contact No.</th>
+                    <th>Email</th>
+                    <th>T-Shirt</th>
+
+                    <th>Total</th>
+                    <th>Paid</th>
+                    <th>Selected</th>
+                    <th>Payment<br />Status</th>
+                    <th>Select</th>
+                    <th>Payment<br />Done</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if(teams.length>0){ teams.forEach(team=>{%>
+                  <tr>
+                    <td><%= team.teamName %></td>
+                    <td><%= team.institution %></td>
+
+                    <td><%= team.coach %></td>
+                    <td><%= team.contactCoach %></td>
+                    <td><%= team.emailCoach %></td>
+                    <td><%= team.tshirtCoach %></td>
+                    <td><%= team.leader %></td>
+                    <td><%= team.contactLeader %></td>
+                    <td><%= team.emailLeader %></td>
+                    <td><%= team.tshirtLeader %></td>
+                    <td><%= team.member1 %></td>
+                    <td><%= team.contactMember1 %></td>
+                    <td><%= team.emailMember1 %></td>
+                    <td><%= team.tshirtMember1 %></td>
+                    <td><%= team.member2 %></td>
+                    <td><%= team.contactMember2 %></td>
+                    <td><%= team.emailMember2 %></td>
+                    <td><%= team.tshirtMember2 %></td>
+
+                    <td><%= team.total %></td>
+                    <td><%= team.paid %></td>
+
+                    <td>
+                      <% if(team.selected==true){%>
+                      <p style="color: green">Yes</p>
+                      <%}else{%>
+                      <p style="color: red">No</p>
+                      <%}%>
+                    </td>
+                    <td>
+                      <% if(team.paid==team.total){%>
+                      <p style="color: green">Successful</p>
+                      <%}else{%>
+                      <p style="color: red">Incomplete</p>
+                      <%}%>
+                    </td>
+
+                    <td>
+                      <% const selectURL="select/"+team._id%>
+                      <a href="<%= selectURL %>">
+                        <i class="fa fa-check"></i>
+                        <span class="fa fa-chevron"></span>
+                      </a>
+                    </td>
+                    <td>
+                      <% const paymentDoneURL="paymentDone/"+team._id%>
+                      <a href="<%= paymentDoneURL %>">
+                        <i class="fa fa-money"></i>
+                        <span class="fa fa-chevron"></span>
+                      </a>
+                    </td>
+                    <td>
+                      <% const editURL="edit/"+team._id%>
+                      <a href="<%= editURL %>">
+                        <i class="fa fa-pencil"></i>
+                        <span class="fa fa-chevron"></span>
+                      </a>
+                    </td>
+                    <td>
+                      <% const deleteURL="delete/"+team._id%>
+                      <a href="<%= deleteURL %>">
+                        <i class="fa fa-trash"></i>
+                        <span class="fa fa-chevron"></span>
+                      </a>
+                    </td>
+                  </tr>
+                  <% }) } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
