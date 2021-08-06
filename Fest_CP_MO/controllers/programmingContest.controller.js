@@ -1,7 +1,9 @@
 const ProgrammingContest = require("../models/ProgrammingContest.model");
 
 const getCP = (req, res) => {
-  res.render("programming-contest/register.ejs", { error: req.flash("error") });
+  res.render("programming-contest/register.ejs", {
+    error: req.flash("error"),
+  });
 };
 const postCP = (req, res) => {
   const {
@@ -167,6 +169,89 @@ const selectCP = (req, res) => {
     });
 };
 
+const editCP = (req, res) => {
+  const id = req.params.id;
+  let teamInfo;
+
+  ProgrammingContest.findOne({ _id: id })
+    .then((team) => {
+      teamInfo = team;
+      // console.log(teamInfo);
+      res.render("programming-contest/editTeam.ejs", {
+        error: req.flash("error"),
+        teamInfo: team,
+      });
+    })
+    .catch(() => {
+      error = "Failed to update data!";
+      res.render("programming-contest/list.ejs", {
+        error: req.flash("error", error),
+      });
+    });
+};
+
+const postEditCP = (req, res) => {
+  const {
+    teamName,
+    institution,
+    coach,
+    contactCoach,
+    emailCoach,
+    tshirtCoach,
+    leader,
+    contactLeader,
+    emailLeader,
+    tshirtLeader,
+    member1,
+    contactMember1,
+    emailMember1,
+    tshirtMember1,
+    member2,
+    contactMember2,
+    emailMember2,
+    tshirtMember2,
+  } = req.body;
+  console.log("here");
+
+  ProgrammingContest.updateOne(
+    {
+      _id: req.params.id,
+    },
+    {
+      $set: {
+        teamName,
+        institution,
+        coach,
+        contactCoach,
+        emailCoach,
+        tshirtCoach,
+        leader,
+        contactLeader,
+        emailLeader,
+        tshirtLeader,
+        member1,
+        contactMember1,
+        emailMember1,
+        tshirtMember1,
+        member2,
+        contactMember2,
+        emailMember2,
+        tshirtMember2,
+      },
+    }
+  )
+    .then(() => {
+      let error = "Data has been updated!";
+      req.flash("error", error);
+      res.redirect("/ProgrammingContest/list");
+    })
+    .catch((err) => {
+      let error = "Data could not be updated!";
+      req.flash("error", error);
+      res.redirect("/ProgrammingContest/list");
+    });
+};
+
 module.exports = {
   getCP,
   postCP,
@@ -174,4 +259,6 @@ module.exports = {
   deleteCP,
   paymentDoneCP,
   selectCP,
+  editCP,
+  postEditCP,
 };

@@ -13,6 +13,8 @@ const {
   deleteCP,
   paymentDoneCP,
   selectCP,
+  editCP,
+  postEditCP,
 } = require("../controllers/programmingContest.controller");
 
 router.get("/register", ensureAuthenticated, addUserData, getCP);
@@ -22,5 +24,7 @@ router.get("/list", ensureAuthenticated, addUserData, getCPList);
 router.get("/delete/:id", ensureAuthenticated, addUserData, deleteCP);
 router.get("/paymentDone/:id", ensureAuthenticated, addUserData, paymentDoneCP);
 router.get("/select/:id", ensureAuthenticated, addUserData, selectCP);
+router.get("/edit/:id", ensureAuthenticated, addUserData, editCP);
+router.post("/edit/:id", ensureAuthenticated, addUserData, postEditCP);
 
 module.exports = router;
