@@ -10,7 +10,7 @@ const participantHash = randomstring.generate({
   length: 32,
   charset: "alphanumeric",
 });
-console.log(participantHash);
+// console.log(participantHash);
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -68,7 +68,7 @@ const postMO = (req, res) => {
           const to = email;
           const subject =
             "Participant registered successfully in Math Olympiad";
-          const body = "Registration Completed.";
+          const body = `Registration Completed.Your unique code: ${participantHash}`;
           console.log(participantHash);
 
           const options = {
