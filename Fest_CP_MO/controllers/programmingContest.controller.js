@@ -1,4 +1,16 @@
 const ProgrammingContest = require("../models/ProgrammingContest.model");
+const nodemailer = require("nodemailer");
+
+const senderMail = process.env.UserEmail;
+const password = process.env.UserPass;
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: senderMail,
+    pass: password,
+  },
+});
 
 const getCP = (req, res) => {
   res.render("programming-contest/register.ejs", {
@@ -70,6 +82,36 @@ const postCP = (req, res) => {
         .then(() => {
           error = "Team has been registered successfully!";
           console.log(error);
+
+          const toMailList = [
+            emailCoach,
+            emailLeader,
+            emailMember1,
+            emailMember2,
+          ];
+
+          var to;
+          const subject = "Team registered successfully in Programming Contest";
+          const body = "Your team registration completed.";
+
+          for (let i = 0; i < toMailList.length; i++) {
+            to = toMailList[i];
+            const options = {
+              from: senderMail,
+              to: to,
+              subject: subject,
+              text: body,
+            };
+
+            transporter.sendMail(options, function (err, info) {
+              if (err) {
+                console.log(err);
+                return;
+              }
+              console.log("Sent: " + info.response);
+            });
+          }
+
           req.flash("error", error);
           res.redirect("/ProgrammingContest/register");
         })

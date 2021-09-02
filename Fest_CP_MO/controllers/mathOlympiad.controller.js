@@ -1,4 +1,16 @@
 const MathOlympiad = require("../models/MathOlympiad.model");
+const nodemailer = require("nodemailer");
+
+const senderMail = process.env.UserEmail;
+const password = process.env.UserPass;
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: senderMail,
+    pass: password,
+  },
+});
 
 const getMO = (req, res) => {
   res.render("math-olympiad/register.ejs", { error: req.flash("error") });
@@ -43,6 +55,27 @@ const postMO = (req, res) => {
         .save()
         .then(() => {
           error = "Participant has been registered successfully!";
+
+          const to = email;
+          const subject =
+            "Participant registered successfully in Math Olympiad";
+          const body = "Registration Completed.";
+
+          const options = {
+            from: senderMail,
+            to: to,
+            subject: subject,
+            text: body,
+          };
+
+          transporter.sendMail(options, function (err, info) {
+            if (err) {
+              console.log(err);
+              return;
+            }
+            console.log("Sent: " + info.response);
+          });
+
           req.flash("error", error);
           res.redirect("/MathOlympiad/register");
         })
