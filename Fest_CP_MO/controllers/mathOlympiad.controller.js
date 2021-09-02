@@ -58,6 +58,7 @@ const postMO = (req, res) => {
         total,
         selected,
         tshirt,
+        participantHash,
       });
       participant
         .save()
