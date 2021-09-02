@@ -89,7 +89,7 @@ const CPSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  teamHash: {
+  teamHashValue: {
     type: String,
     required: false,
   },

@@ -24,6 +24,7 @@ const getCP = (req, res) => {
     error: req.flash("error"),
   });
 };
+
 const postCP = (req, res) => {
   const {
     teamName,
@@ -44,7 +45,6 @@ const postCP = (req, res) => {
     contactMember2,
     emailMember2,
     tshirtMember2,
-    teamHash,
   } = req.body;
 
   const total = 2000;
@@ -84,6 +84,7 @@ const postCP = (req, res) => {
         total,
         paid,
         selected,
+        teamHash,
       });
       team
         .save()
