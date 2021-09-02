@@ -43,13 +43,14 @@
                     <th colspan="8">Others</th>
                   </tr>
                   <tr>
+                    <th>Team ID</th>
                     <th>Team<br />Name</th>
                     <th>Institution</th>
 
                     <th>Name</th>
                     <th>Contact No.</th>
                     <th>Email</th>
-                    <th>T-Shirt</th>
+                   
                     <th>Name</th>
                     <th>Contact No.</th>
                     <th>Email</th>
@@ -76,13 +77,12 @@
                 <tbody>
                   <% if(teams.length>0){ teams.forEach(team=>{%>
                   <tr>
+                    <td><%= team.teamHash %></td>
                     <td><%= team.teamName %></td>
                     <td><%= team.institution %></td>
-
                     <td><%= team.coach %></td>
                     <td><%= team.contactCoach %></td>
                     <td><%= team.emailCoach %></td>
-                    <td><%= team.tshirtCoach %></td>
                     <td><%= team.leader %></td>
                     <td><%= team.contactLeader %></td>
                     <td><%= team.emailLeader %></td>
@@ -95,10 +95,8 @@
                     <td><%= team.contactMember2 %></td>
                     <td><%= team.emailMember2 %></td>
                     <td><%= team.tshirtMember2 %></td>
-
                     <td><%= team.total %></td>
                     <td><%= team.paid %></td>
-
                     <td>
                       <% if(team.selected==true){%>
                       <p style="color: green">Yes</p>
@@ -113,7 +111,6 @@
                       <p style="color: red">Incomplete</p>
                       <%}%>
                     </td>
-
                     <td>
                       <% const selectURL="select/"+team._id%>
                       <a href="<%= selectURL %>">
