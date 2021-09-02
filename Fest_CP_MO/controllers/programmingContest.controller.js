@@ -1,8 +1,15 @@
+const randomstring = require("randomstring");
 const ProgrammingContest = require("../models/ProgrammingContest.model");
 const nodemailer = require("nodemailer");
 
 const senderMail = process.env.UserEmail;
 const password = process.env.UserPass;
+
+const teamHash = randomstring.generate({
+  length: 32,
+  charset: "alphanumeric",
+});
+console.log(teamHash);
 
 const transporter = nodemailer.createTransport({
   service: "gmail",

@@ -1,8 +1,16 @@
+const randomstring = require("randomstring");
+
 const MathOlympiad = require("../models/MathOlympiad.model");
 const nodemailer = require("nodemailer");
 
 const senderMail = process.env.UserEmail;
 const password = process.env.UserPass;
+
+const participantHash = randomstring.generate({
+  length: 32,
+  charset: "alphanumeric",
+});
+console.log(participantHash);
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -60,6 +68,7 @@ const postMO = (req, res) => {
           const subject =
             "Participant registered successfully in Math Olympiad";
           const body = "Registration Completed.";
+          console.log(participantHash);
 
           const options = {
             from: senderMail,
