@@ -1,15 +1,12 @@
 const randomstring = require("randomstring");
+const uniqueString = require("unique-string");
 const ProgrammingContest = require("../models/ProgrammingContest.model");
 const nodemailer = require("nodemailer");
 
 const senderMail = process.env.UserEmail;
 const password = process.env.UserPass;
 
-const teamHash = randomstring.generate({
-  length: 32,
-  charset: "alphanumeric",
-});
-// console.log(teamHash);
+const teamHash = uniqueString();
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -103,13 +100,13 @@ const postCP = (req, res) => {
 
           var to;
           const subject =
-            "Team registration complete in Programming Contest of ICT Fest, 2022";
+            "Team registration complete in Programming Contest of ICT Fest, 2021";
           var body;
           console.log(teamHash);
 
           for (let i = 0; i < toMailList.length; i++) {
             to = toMailList[i];
-            body = `Welcome to ICT Fest 2022, ${name[i]} . Your team's registration successfully completed for Programming Contest. Team Details: Team Name-${teamName}, Coach- ${coach}, Leader- ${leader}, Member 1- ${member1}, Member 2- ${member2} . Your team's identifier is: ${teamHash}. Best of luck for the contest.`;
+            body = `Welcome to ICT Fest 2021, ${name[i]} . Your team's registration successfully completed for Programming Contest. Team Details: Team Name-${teamName}, Coach- ${coach}, Leader- ${leader}, Member 1- ${member1}, Member 2- ${member2} . Your team's identifier is: ${teamHash}. Best of luck for the contest.`;
 
             const options = {
               from: senderMail,

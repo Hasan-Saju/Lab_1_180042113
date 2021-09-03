@@ -1,16 +1,12 @@
 const randomstring = require("randomstring");
-
+const uniqueString = require("unique-string");
 const MathOlympiad = require("../models/MathOlympiad.model");
 const nodemailer = require("nodemailer");
 
 const senderMail = process.env.UserEmail;
 const password = process.env.UserPass;
 
-const participantHash = randomstring.generate({
-  length: 32,
-  charset: "alphanumeric",
-});
-// console.log(participantHash);
+const participantHash = uniqueString();
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -67,8 +63,8 @@ const postMO = (req, res) => {
 
           const to = email;
           const subject =
-            "Participant registration complete in Math Olympiad of ICT Fest, 2022 ";
-          const body = `Welcome to ICT Fest 2022, ${name}. You have completed registration successfully for Math Olympiad. Your unique participant identifier is: ${participantHash}. Best of luck for the competition.`;
+            "Participant registration complete in Math Olympiad of ICT Fest, 2021 ";
+          const body = `Welcome to ICT Fest 2021, ${name}. You have completed registration successfully for Math Olympiad. Your unique participant identifier is: ${participantHash}. Best of luck for the competition.`;
           console.log(participantHash);
 
           const options = {
