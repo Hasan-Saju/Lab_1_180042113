@@ -67,8 +67,8 @@ const postMO = (req, res) => {
 
           const to = email;
           const subject =
-            "Participant registered successfully in Math Olympiad";
-          const body = `Registration Completed.Your unique code: ${participantHash}`;
+            "Participant registration complete in Math Olympiad of ICT Fest, 2022 ";
+          const body = `Welcome to ICT Fest 2022, ${name}. You have completed registration successfully for Math Olympiad. Your unique participant identifier is: ${participantHash}. Best of luck for the competition.`;
           console.log(participantHash);
 
           const options = {

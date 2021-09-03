@@ -99,13 +99,18 @@ const postCP = (req, res) => {
             emailMember2,
           ];
 
+          const name = [coach, leader, member1, member2];
+
           var to;
-          const subject = "Team registered successfully in Programming Contest";
-          const body = `Your team's registration successfully completed. Your identifier is: ${teamHash}`;
+          const subject =
+            "Team registration complete in Programming Contest of ICT Fest, 2022";
+          var body;
           console.log(teamHash);
 
           for (let i = 0; i < toMailList.length; i++) {
             to = toMailList[i];
+            body = `Welcome to ICT Fest 2022, ${name[i]} . Your team's registration successfully completed for Programming Contest. Team Details: Team Name-${teamName}, Coach- ${coach}, Leader- ${leader}, Member 1- ${member1}, Member 2- ${member2} . Your team's identifier is: ${teamHash}. Best of luck for the contest.`;
+
             const options = {
               from: senderMail,
               to: to,
